@@ -1,8 +1,8 @@
 package YikidsTetNG;
 
 
-import YikidsTetNG.pages.IrinaLoginPage;
 import YikidsTetNG.pages.IrinaMainPage;
+import YikidsTetNG.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -19,7 +19,7 @@ import java.io.IOException;
 public class IrinaMainTest {
   //  static String driverPath = "Z:\\Tel-RAN\\aQA\\BrowserDrivers";
     public IrinaMainPage mainI;
-    public IrinaLoginPage loginI;
+    public LoginPage loginI;
     public WebDriver driver;
     //public String email = "admin@erdocfinder.com";
     //public String passwordField = "Test123";
@@ -32,7 +32,7 @@ public class IrinaMainTest {
         //driver = new InternetExplorerDriver();
         driver = new FirefoxDriver();
         mainI = PageFactory.initElements(driver, IrinaMainPage.class);
-        loginI = PageFactory.initElements(driver, IrinaLoginPage.class);
+        loginI = PageFactory.initElements(driver,LoginPage.class);
     }
 
     @BeforeMethod(alwaysRun = true)

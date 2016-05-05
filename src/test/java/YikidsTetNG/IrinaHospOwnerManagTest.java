@@ -2,8 +2,9 @@ package YikidsTetNG;
 
 
 import YikidsTetNG.pages.IrinaHospOwnerManagPage;
-import YikidsTetNG.pages.IrinaLoginPage;
+
 import YikidsTetNG.pages.IrinaMainPage;
+import YikidsTetNG.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -22,7 +23,7 @@ import static org.testng.AssertJUnit.assertTrue;
 public class IrinaHospOwnerManagTest {
   //  static String driverPath = "Z:\\Tel-RAN\\aQA\\BrowserDrivers";
   public IrinaMainPage mainI;
-    public IrinaLoginPage loginI;
+    public LoginPage loginI;
     public IrinaHospOwnerManagPage hospManagI;
     public WebDriver driver;
     //public String email = "admin@erdocfinder.com";
@@ -37,7 +38,7 @@ public class IrinaHospOwnerManagTest {
         driver = new FirefoxDriver();
         hospManagI = PageFactory.initElements(driver, IrinaHospOwnerManagPage.class);
         mainI = PageFactory.initElements(driver, IrinaMainPage.class);
-        loginI = PageFactory.initElements(driver, IrinaLoginPage.class);
+        loginI = PageFactory.initElements(driver, LoginPage.class);
     }
 
     @BeforeMethod(alwaysRun = true)
