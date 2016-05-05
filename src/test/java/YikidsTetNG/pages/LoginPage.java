@@ -31,8 +31,14 @@ public class LoginPage extends Page {
     @FindBy(id = "firstname")
     WebElement firstNameFieldSingUpPage;
 
-    //buttons
-    @FindBy(xpath = "//*[@id='login-form']/div/button")
+    @FindBy(xpath = "//*[@class='container']/form[@action='reset']/input[@id='email']")
+    WebElement enterYourmailField;
+
+    @FindBy(xpath = "//*[@id='zipcode']")
+    WebElement signuppageZipCodeField;
+
+   //buttons
+    @FindBy(xpath = "//*[@id='login-form']//button")
     WebElement loginButton;
 
     @FindBy(xpath = "//*[@id='logout-container']/a")
@@ -50,23 +56,33 @@ public class LoginPage extends Page {
     @FindBy(id = "create-account")
     WebElement continueButton;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    /*@FindBy(xpath = "//button[@type='submit']")
+    WebElement resetPasswordButtom;
+    */
+
+    @FindBy(xpath = "html/body/div[2]/form/button")
     WebElement resetPasswordButtom;
 
     //Messages
     @FindBy(xpath = "//*[@id='section-account']/span")
     WebElement captchaMessage;
 
-    @FindBy(xpath = "//div[@class='err'][contains(text(),'Your passwordField is not correct. Please try again.')]")
+    //Your passwordField is not correct. Please try again.
+    @FindBy(xpath = "//*[@id='login-form']/div[1]")
     WebElement errorPasswordMessage;
-    /*@FindBy(xpath = "/*//*[@id='login-form']/div[1]")
-    WebElement errorPasswordMessage;*/
+    /*
+    @FindBy(xpath = "//*[@id='login-form']/div[1]")
+    WebElement warningLoginMessage;
+    */
+    //link Forgot password? into message "Your password is not correct. Please try again. Forgot password?"
+    @FindBy(xpath = "*[@id='login-form']/div[1]/a")
+    WebElement forgotPasswordIntoErrorPasswordMessage;
 
     //message-Please sign up because your email does not exist in our system
     @FindBy(xpath = "//*[@id='login-form']/div[1]")
     WebElement emailNotExistMessage;
     /*@FindBy(xpath = "//div[@class='err'][contains(text(),'Please sign up because your email does not exist in our system.')]")
-    WebElement notExistEmaildMessage;
+    WebElement emailNotValidMessage;
     @FindBy(xpath="//*[@class='err']")
     WebElement errorEmail;
     */
@@ -76,6 +92,10 @@ public class LoginPage extends Page {
     @FindBy(xpath = "//*[@id='section-account']/div[1]/div/label")
     WebElement FirstNameLabel;
 
+    @FindBy(xpath = "html/body/div[2]/form/label")
+    WebElement forgotpasswordEmailLabel;
+
+
     //Titles
     @FindBy(xpath = "//*[@id='contentContainer']/p[1]")
     WebElement pageSignUpTitle;
@@ -83,8 +103,9 @@ public class LoginPage extends Page {
     @FindBy(xpath = "//p[@class='title']")
     WebElement titleSignUpPageLabel;
      */
-    @FindBy(xpath = "//*[html/body/div[2]/h1]")
+    @FindBy(xpath = "//body/div[2]/h1")
     WebElement forgotPasswordTitle;
+
 
     @FindBy(xpath = "//*[@id='contentContainer']/p")
     WebElement resetPasswordTitle;
@@ -113,9 +134,9 @@ public class LoginPage extends Page {
 
     public String generateEmail() {
         String rand = getRandomString(5);
-        String username = rand + "@yopmail.com";
-        Log.info("Doctor's Username generated is <" + username + ">");
-        return username;
+        String mail = rand + "@yopmail.com";
+        Log.info("Generated username is <" + mail + ">");
+        return mail;
     }
 
     //Open Page
@@ -133,39 +154,40 @@ public class LoginPage extends Page {
     }
 
     public LoginPage fillPasswordField(String password) {
-        Log.info("Filling passwordField field");
+        Log.info("Filling passwordField field"+password);
         setElementText(passwordField, password);
         return this;
     }
 
     public LoginPage clickToLoginButton() {
-        Log.info("LogIn");
+        Log.info("Clicking loginButton");
         clickElement(loginButton);
         return this;
     }
 
     public LoginPage clickToSignUpButton() {
-        //Log.info("SignUp");
+        Log.info("Clicking SignUpButton");
         clickElement(signUpButton);
         return this;
     }
 
     public LoginPage clickToForgotPasswordButton() {
-        //Log.info("ForgotPassword");
+        Log.info("Clicking ForgotPasswordButton");
         clickElement(forgotPasswordButton);
         return this;
     }
     public LoginPage clickNotCorrectPasswordForgotPasswordButton() {
-        //Log.info("ForgotPassword");
-        clickElement(notCorrectPasswordForgotPasswordButton);
+        Log.info("Clicking ForgotPassword IntoErrorPasswordMessage");
+        clickElement(forgotPasswordIntoErrorPasswordMessage);
         return this;
     }
 
 
     //filling all fields
     public LoginPage fillLodInFieldsPozitive() {
-        fillEmailField("admin@erdocfinder.com");
-        fillPasswordField("Test123");
+        Log.info("Filling filds pozitiv");
+        fillEmailField(login);
+        fillPasswordField(pass);
         clickToLoginButton();
         return this;
     }
