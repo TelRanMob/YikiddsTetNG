@@ -1,7 +1,7 @@
 package YikidsTetNG.pages;
 
 /**
- * Created by Irina Primak on 4/01/2016.
+ * Created by Irina Primak on 03/05/2016.
  */
 
 
@@ -14,10 +14,12 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.Random;
 
-public class IrinaLoginPage extends Page {
+public class LoginPage extends Page {
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     private static Random rnd = new Random();
     public String PAGE_URL;
+    private String login = "admin@erdocfinder.com";
+    private String pass = "Test123";
 
     //fields
     @FindBy(id = "email")
@@ -26,12 +28,15 @@ public class IrinaLoginPage extends Page {
     @FindBy(id = "passwordField")
     WebElement passwordField;
 
+    @FindBy(id = "firstname")
+    WebElement firstNameFieldSingUpPage;
+
     //buttons
     @FindBy(xpath = "//*[@id='login-form']/div/button")
     WebElement loginButton;
 
     @FindBy(xpath = "//*[@id='logout-container']/a")
-    WebElement logOutButton;
+    WebElement logOutOverviewPageButton;
 
     @FindBy(xpath = "//*[@id='login-form']/div/a[1]")
     WebElement signUpButton;
@@ -40,24 +45,46 @@ public class IrinaLoginPage extends Page {
     WebElement forgotPasswordButton;
 
     @FindBy(xpath = "//*[@id='login-form']/div[1]")
-    WebElement NotCorrectPasswordForgotPasswordButton;
+    WebElement notCorrectPasswordForgotPasswordButton;
 
     @FindBy(id = "create-account")
     WebElement continueButton;
 
-    @FindBy(xpath = "html/body/div[2]/form/button")
+    @FindBy(xpath = "//button[@type='submit']")
     WebElement resetPasswordButtom;
 
-    //Labels
-    /*@FindBy(xpath = "/*//*[@id='login-form']/div[1]")
-    WebElement errorPasswordMessage;*/
+    //Messages
+    @FindBy(xpath = "//*[@id='section-account']/span")
+    WebElement captchaMessage;
 
     @FindBy(xpath = "//div[@class='err'][contains(text(),'Your passwordField is not correct. Please try again.')]")
     WebElement errorPasswordMessage;
+    /*@FindBy(xpath = "/*//*[@id='login-form']/div[1]")
+    WebElement errorPasswordMessage;*/
+
+    //message-Please sign up because your email does not exist in our system
+    @FindBy(xpath = "//*[@id='login-form']/div[1]")
+    WebElement emailNotExistMessage;
+    /*@FindBy(xpath = "//div[@class='err'][contains(text(),'Please sign up because your email does not exist in our system.')]")
+    WebElement notExistEmaildMessage;
+    @FindBy(xpath="//*[@class='err']")
+    WebElement errorEmail;
+    */
 
 
+    //Labels
+    @FindBy(xpath = "//*[@id='section-account']/div[1]/div/label")
+    WebElement FirstNameLabel;
+
+    //Titles
     @FindBy(xpath = "//*[@id='contentContainer']/p[1]")
     WebElement pageSignUpTitle;
+    /*
+    @FindBy(xpath = "//p[@class='title']")
+    WebElement titleSignUpPageLabel;
+     */
+    @FindBy(xpath = "//*[html/body/div[2]/h1]")
+    WebElement forgotPasswordTitle;
 
     @FindBy(xpath = "//*[@id='contentContainer']/p")
     WebElement resetPasswordTitle;
@@ -68,9 +95,9 @@ public class IrinaLoginPage extends Page {
 
 
 
-    public IrinaLoginPage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
-        this.PAGE_URL = "http://admin.yikids.com/";
+        this.PAGE_URL = "http://admin.yikids.com";
         PageFactory.initElements(driver, this);
     }
 
@@ -92,51 +119,51 @@ public class IrinaLoginPage extends Page {
     }
 
     //Open Page
-    public IrinaLoginPage openLoginPage() {
+    public LoginPage openLoginPage() {
         Log.info("Opening Login page");
         driver.get(PAGE_URL);
         return this;
     }
     //Fill the fields
 
-    public IrinaLoginPage fillEmailField(String email) {
+    public LoginPage fillEmailField(String email) {
         Log.info("Filling email field " + email);
         setElementText(emailField, email);
         return this;
     }
 
-    public IrinaLoginPage fillPasswordField(String password) {
+    public LoginPage fillPasswordField(String password) {
         Log.info("Filling passwordField field");
         setElementText(passwordField, password);
         return this;
     }
 
-    public IrinaLoginPage clickToLoginButton() {
+    public LoginPage clickToLoginButton() {
         Log.info("LogIn");
         clickElement(loginButton);
         return this;
     }
 
-    public IrinaLoginPage clickToSignUpButton() {
+    public LoginPage clickToSignUpButton() {
         //Log.info("SignUp");
         clickElement(signUpButton);
         return this;
     }
 
-    public IrinaLoginPage clickToForgotPasswordButton() {
+    public LoginPage clickToForgotPasswordButton() {
         //Log.info("ForgotPassword");
         clickElement(forgotPasswordButton);
         return this;
     }
-    public IrinaLoginPage clickNotCorrectPasswordForgotPasswordButton() {
+    public LoginPage clickNotCorrectPasswordForgotPasswordButton() {
         //Log.info("ForgotPassword");
-        clickElement(NotCorrectPasswordForgotPasswordButton);
+        clickElement(notCorrectPasswordForgotPasswordButton);
         return this;
     }
 
 
     //filling all fields
-    public IrinaLoginPage fillLodInFieldsPozitive() {
+    public LoginPage fillLodInFieldsPozitive() {
         fillEmailField("admin@erdocfinder.com");
         fillPasswordField("Test123");
         clickToLoginButton();
@@ -150,7 +177,7 @@ public class IrinaLoginPage extends Page {
     }
     public boolean isOnMainPage() {
         // Log.info(");
-        return exists(logOutButton);
+        return exists(logOutOverviewPageButton);
     }
     public boolean isOnSingUpPage() {
         // Log.info(");
@@ -184,7 +211,7 @@ public class IrinaLoginPage extends Page {
         waitUntilIsLoaded(loginButton);
     }
     public void waitForlogOutButton()    {
-        waitUntilIsLoaded(logOutButton);
+        waitUntilIsLoaded(logOutOverviewPageButton);
     }
     public void waitForcontinueButtonOnSignUp()    {
         waitUntilIsLoaded(continueButton);

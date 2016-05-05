@@ -1,7 +1,7 @@
 package YikidsTetNG;
 
 
-import YikidsTetNG.pages.IrinaLoginPage;
+import YikidsTetNG.pages.LoginPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -12,9 +12,9 @@ import static org.testng.AssertJUnit.assertTrue;
 /**
  * Created by Irina Primak on 29-Mar-16.
  */
-public class IrinaLoginTest extends TestNgTestBase {
+public class LoginTest extends TestNgTestBase {
   //  static String driverPath = "Z:\\Tel-RAN\\aQA\\BrowserDrivers";
-    public IrinaLoginPage loginI;
+    public LoginPage loginI;
     //public WebDriver driver;
     public String email = "admin@erdocfinder.com";
     public String password = "Test123";
@@ -26,7 +26,7 @@ public class IrinaLoginTest extends TestNgTestBase {
         //System.setProperty("webdriver.ie.driver", driverPath+"IEDriverServer.exe");
         //driver = new InternetExplorerDriver();
        // driver = new FirefoxDriver();
-        loginI = PageFactory.initElements(driver, IrinaLoginPage.class);
+        loginI = PageFactory.initElements(driver, LoginPage.class);
     }
 
     @BeforeMethod(alwaysRun = true)
