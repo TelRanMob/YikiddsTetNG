@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: ru.stqa.selenium:webdriver-factory:1.1.52">
     <CLASSES>
-      <root url="jar://$M2_REPO$/ru/stqa/selenium/webdriver-factory/1.1.52/webdriver-factory-1.1.52.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/ru/stqa/selenium/webdriver-factory/1.1.52/webdriver-factory-1.1.52.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$M2_REPO$/ru/stqa/selenium/webdriver-factory/1.1.52/webdriver-factory-1.1.52-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/ru/stqa/selenium/webdriver-factory/1.1.52/webdriver-factory-1.1.52-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$M2_REPO$/ru/stqa/selenium/webdriver-factory/1.1.52/webdriver-factory-1.1.52-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/ru/stqa/selenium/webdriver-factory/1.1.52/webdriver-factory-1.1.52-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
