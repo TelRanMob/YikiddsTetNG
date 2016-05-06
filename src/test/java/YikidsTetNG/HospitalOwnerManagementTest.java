@@ -1,7 +1,7 @@
 package YikidsTetNG;
 
 
-import YikidsTetNG.pages.IrinaHospOwnerManagPage;
+import YikidsTetNG.pages.HospitalOwnerManagementPage;
 
 import YikidsTetNG.pages.IrinaMainPage;
 import YikidsTetNG.pages.LoginPage;
@@ -17,26 +17,24 @@ import java.io.IOException;
 
 import static org.testng.AssertJUnit.assertTrue;
 
+
 /**
- * Created by Irina Primak on 29-Mar-16.
+ * Created by Pereminski Tatiana on 6-Mai-16.
  */
-public class IrinaHospOwnerManagTest {
-  //  static String driverPath = "Z:\\Tel-RAN\\aQA\\BrowserDrivers";
+public class HospitalOwnerManagementTest extends TestNgTestBase {
+
   public IrinaMainPage mainI;
     public LoginPage loginI;
-    public IrinaHospOwnerManagPage hospManagI;
+    public HospitalOwnerManagementPage hospManagI;
     public WebDriver driver;
     //public String email = "admin@erdocfinder.com";
     //public String passwordField = "Test123";
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
-        //System.setProperty("webdriver.crome.driver", driverPath+"chromedriver.exe");
-        //driver = new ChromeDriver();
-        //System.setProperty("webdriver.ie.driver", driverPath+"IEDriverServer.exe");
-        //driver = new InternetExplorerDriver();
+
         driver = new FirefoxDriver();
-        hospManagI = PageFactory.initElements(driver, IrinaHospOwnerManagPage.class);
+        hospManagI = PageFactory.initElements(driver, HospitalOwnerManagementPage.class);
         mainI = PageFactory.initElements(driver, IrinaMainPage.class);
         loginI = PageFactory.initElements(driver, LoginPage.class);
     }

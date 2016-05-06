@@ -25,7 +25,7 @@ public class LoginPage extends Page {
     @FindBy(id = "email")
     WebElement emailField;
 
-    @FindBy(id = "passwordField")
+    @FindBy(id = "password")
     WebElement passwordField;
 
     @FindBy(id = "firstname")
