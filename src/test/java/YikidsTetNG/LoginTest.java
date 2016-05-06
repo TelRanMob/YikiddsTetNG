@@ -32,7 +32,7 @@ public class LoginTest extends TestNgTestBase {
     @BeforeMethod(alwaysRun = true)
     public void beforeMethodSetUp() {
        // .openLoginPage()
-        driver.get(baseUrl);
+        driver.get("http://admin.yikids.com/");
         loginI .waitForloginButton();
         //verification
         //assertTrue("loginButtom not appeare",loginI.isOnLoginPage());

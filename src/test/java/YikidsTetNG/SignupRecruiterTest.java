@@ -1,14 +1,11 @@
 package YikidsTetNG;
 
-import YikidsTetNG.pages.SignupPageRecruiter;
+import YikidsTetNG.pages.SignupRecruiterPage;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -18,20 +15,20 @@ import static org.testng.AssertJUnit.assertTrue;
 /**
  * Created by Elena on 05.05.2016.
  */
-public class SignupTestRecruiter {
+public class SignupRecruiterTest extends TestNgTestBase {
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
-    protected WebDriver driver;
-    public SignupPageRecruiter signupPage;
+    //  protected WebDriver driver;
+    public SignupRecruiterPage signupPage;
 
-    @BeforeSuite
+    @BeforeClass(alwaysRun = true)
     public void setup() {
         //System.setProperty("webdriver.chrome.driver", driverPath+"chromedriver.exe");
-        driver = new ChromeDriver();
+        //  driver = new ChromeDriver();
         //driver = new FirefoxDriver();
-        signupPage = PageFactory.initElements(driver, SignupPageRecruiter.class);
+        signupPage = PageFactory.initElements(driver, SignupRecruiterPage.class);
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void beforeMethodSetUp() {signupPage.openElenaSignUPPage();
         // public void beforeMethodSetUp(){driver.get(baseUrl);
     }
@@ -82,8 +79,8 @@ public class SignupTestRecruiter {
         Assert.assertEquals(signupPage.waitAndGetTextofSelectedMessage(nubmer), message, "Message is nor correct");
 
     }
-    @AfterSuite(alwaysRun = true)
+   /* @AfterSuite(alwaysRun = true)
     public void tearDown() {
         this.driver.quit();
-    }
+    }*/
 }

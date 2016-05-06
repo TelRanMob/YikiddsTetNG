@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by Elena on 05.05.2016.
  */
-public class SignupPageRecruiter extends Page {
+public class SignupRecruiterPage extends Page {
 
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
 
@@ -107,19 +107,13 @@ public class SignupPageRecruiter extends Page {
     WebElement partners;
 
 
-
-
-
-
-
-
-    public SignupPageRecruiter(WebDriver driver) {
+    public SignupRecruiterPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = "http://physician.yikids.com/recruiter/signup";
         PageFactory.initElements(driver, this);
     }
 
-    public SignupPageRecruiter openElenaSignUPPage() {
+    public SignupRecruiterPage openElenaSignUPPage() {
         Log.info("Opening ElenaSignUPPage page");
         driver.get(PAGE_URL);
         return this;
@@ -210,38 +204,43 @@ public class SignupPageRecruiter extends Page {
 
 
     //Fill the fields
-    public SignupPageRecruiter fillFirstnameField(String username) {
+    public SignupRecruiterPage fillFirstnameField(String username) {
         Log.info("Filling username field");
         setElementText(firstNameField, username);
         return this;
     }
-    public SignupPageRecruiter fillLastNameField(String lastname) {
+
+    public SignupRecruiterPage fillLastNameField(String lastname) {
         Log.info("Filling username field");
         setElementText(lastNameField, lastname);
         return this;
     }
-    public SignupPageRecruiter fillemailField(String email) {
+
+    public SignupRecruiterPage fillemailField(String email) {
         Log.info("Filling username field");
         setElementText(emailField, email);
         return this;
     }
-    public SignupPageRecruiter fillzipcodeField(String zipcode) {
+
+    public SignupRecruiterPage fillzipcodeField(String zipcode) {
         Log.info("Filling username field");
         setElementText(zipCode1Field, zipcode);
         return this;
     }
-    public SignupPageRecruiter fillzipCode2Field(String zipcode2) {
+
+    public SignupRecruiterPage fillzipCode2Field(String zipcode2) {
         Log.info("Filling username field");
         setElementText(zipCode2Field, zipcode2);
         return this;
     }
-    public SignupPageRecruiter fillcompanyField(String companyName) {
+
+    public SignupRecruiterPage fillcompanyField(String companyName) {
         Log.info("Filling username field");
         setElementText(companField, companyName);
         return this;}
 
     //clicking buttons
-    public SignupPageRecruiter ClickContinueButton() {
+    public SignupRecruiterPage ClickContinueButton() {
         Log.info("Click on continue button");
         clickElement(continueButton);
         return this;
