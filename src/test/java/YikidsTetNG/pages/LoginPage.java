@@ -194,19 +194,19 @@ public class LoginPage extends Page {
 
        //verification methods
     public boolean isOnLoginPage() {
-        // Log.info(");
+        Log.info("Login page verfication");
         return exists(loginButton);
     }
-    public boolean isOnMainPage() {
-        // Log.info(");
+    public boolean isOnOverviwePage() {
+        Log.info("Overviwe page verification");
         return exists(logOutOverviewPageButton);
     }
     public boolean isOnSingUpPage() {
-        // Log.info(");
+        Log.info("SinngUp Verification");
         return exists(continueButton);
     }
     public boolean isOnResetPasswordPage() {
-        // Log.info(");
+        Log.info("ResetPasswordPage Verification");
         return exists(resetPasswordButtom);
     }
 
