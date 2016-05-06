@@ -36,7 +36,7 @@ public class SignupPhisicanTest extends TestNgTestBase {
     }
 
 
-    @Test
+    @Test(groups = {"automatic", "positive"})
     public void VerefyElementsIsPresent() {
 
         Log.info("Tes erefyElementsIsPresent was started....");
@@ -65,7 +65,7 @@ public class SignupPhisicanTest extends TestNgTestBase {
 
     }
 
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "loadInvalidSingUpFromFile")
+    @Test(groups = {"automatic", "negative"}, dataProviderClass = DataProviders.class, dataProvider = "loadInvalidSingUpFromFile")
     public void SingUppNegativeTest(String Firstname, String lastname, String email, String Zip1, String
             Zip2, String nubmer, String message) throws IOException, InterruptedException {
         Log.info("Tes SingUppNegativeTest was started....");
