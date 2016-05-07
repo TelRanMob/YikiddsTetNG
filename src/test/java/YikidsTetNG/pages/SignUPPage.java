@@ -12,7 +12,7 @@ import java.util.Random;
 /**
  * Created by Irina Primak
  */
-public class IrinaSignUPPage extends Page {
+public class SignUPPage extends Page {
     private static Random rnd = new Random();
     //private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
 
@@ -87,7 +87,7 @@ public class IrinaSignUPPage extends Page {
 
 
 
-    public IrinaSignUPPage(WebDriver driver) {
+    public SignUPPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = "http://physician.yikids.com/recruiter/signup";
         PageFactory.initElements(driver, this);
@@ -104,55 +104,55 @@ public class IrinaSignUPPage extends Page {
 
     //Fill the fields
 
-    public IrinaSignUPPage openSignUpPage() {
+    public SignUPPage openSignUpPage() {
         //Log.info("Opening Login page");
         driver.get(PAGE_URL);
         return this;
     }
 
-    public IrinaSignUPPage fillFirstnameField(String username) {
+    public SignUPPage fillFirstnameField(String username) {
         //Log.info("Filling username field");
         setElementText(firstNameField, username);
         return this;
     }
 
-    public IrinaSignUPPage fillLastNameField(String lastname) {
+    public SignUPPage fillLastNameField(String lastname) {
         //Log.info("Filling username field");
         setElementText(lastNameField, lastname);
         return this;
     }
 
-    public IrinaSignUPPage fillemailField(String email) {
+    public SignUPPage fillemailField(String email) {
         //Log.info("Filling username field");
         setElementText(emailField, email);
         return this;
     }
 
-    public IrinaSignUPPage fillzipCodeField(String zipCode) {
+    public SignUPPage fillzipCodeField(String zipCode) {
         //Log.info("Filling username field");
         setElementText(zipCodeField, zipCode);
         return this;
     }
 
-    public IrinaSignUPPage fillzipCod2Field(String zipCode2) {
+    public SignUPPage fillzipCod2Field(String zipCode2) {
         //Log.info("Filling username field");
         setElementText(zipCode2Field, zipCode2);
         return this;
     }
 
-    public IrinaSignUPPage fillcompanyField(String company) {
+    public SignUPPage fillcompanyField(String company) {
         //Log.info("Filling username field");
         setElementText(companyField, company);
         return this;
     }
     //fill all fields in one method
 
-    public IrinaSignUPPage clickElemToContinue() {
+    public SignUPPage clickElemToContinue() {
         clickElement(continueButton);
         return this;
     }
 
-    public IrinaSignUPPage fillSignUp() {
+    public SignUPPage fillSignUp() {
         fillFirstnameField("FirstName");
         fillLastNameField("LastName");
         fillcompanyField("Company");

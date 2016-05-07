@@ -2,6 +2,7 @@ package YikidsTetNG.pages;
 import YikidsTetNG.LogLog4j;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,10 +17,10 @@ import java.io.IOException;
 public class HospitalOwnerManagementPage extends Page {
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
 
-/*****
-    private String login = "admin@erdocfinder.com";
-    private String pass = "Test123";
- ****/
+    /*****
+     private String login = "admin@erdocfinder.com";
+     private String pass = "Test123";
+     ****/
     //title links buttons
     @FindBy(xpath = "//*[@class='nav']/li[1]/a")
     WebElement overViewButton;
@@ -32,7 +33,7 @@ public class HospitalOwnerManagementPage extends Page {
 
     @FindBy(xpath = "//*[@class='nav']/li[4]/a")
     WebElement hospitalButton;
-    *****************
+
     @FindBy(xpath = "//*[@class='nav']/li[4]/a")
     WebElement hospitalAddHospitalButton;
 
@@ -89,16 +90,7 @@ public class HospitalOwnerManagementPage extends Page {
     WebElement NotOwnedStatus;
 
 
-    public String getText() {
-        return getTextElement(status);
-    }
 
-    public boolean CheckTextOfElementLogOut() {
-        return verifyTextBoolean(DeattachButton, " Deattach");
-    }
-    public boolean CheckElementButton() {
-        return verifyElementIsPresent(DeattachButton);
-    }
     //constructor
     public HospitalOwnerManagementPage(WebDriver driver) {
         super(driver);
@@ -108,11 +100,17 @@ public class HospitalOwnerManagementPage extends Page {
     }
 
 
-        public HospitalOwnerManagementPage openSignUpPage() {
-            Log.info("Opening SignUp page");
-            driver.get("http://admin.yikids.com/");
-            return this;
-        }
+    public HospitalOwnerManagementPage openAdminPage() {
+        Log.info("Opening SignUp page");
+        driver.get("http://admin.yikids.com/");
+        return this;
+    }
+
+    public HospitalOwnerManagementPage openHospitalOwnerManagementPage() {
+        Log.info("Opening Hospital Owner Management Page ");
+        driver.get("http://admin.yikids.com/admin/hospital_owner_management");
+        return this;
+    }
 
     public String getPageTitle() {
         return PAGE_TITLE;
@@ -142,6 +140,17 @@ public class HospitalOwnerManagementPage extends Page {
         waitUntilIsLoaded(logOutButton);
     }
 
+    public String getText() {
+        return getTextElement(status);
+    }
+
+    public boolean CheckTextOfElementLogOut() {
+        return verifyTextBoolean(logOutButton, "Log Out");
+    }
+
+    public boolean CheckElementButton() {
+        return verifyElementIsPresent(deattachButton);
+    }
     /***************************************************************************/
     //methods
     public HospitalOwnerManagementPage showAll(){
@@ -159,8 +168,7 @@ public class HospitalOwnerManagementPage extends Page {
         return true;
     }
 
-***********
-    ************
+    /********************************************************************************************************************/
     public HospitalOwnerManagementPage goToHospitalOwnerManagment() {
         //Log.info(
         moveMouseOverElement(hospitalButton);
@@ -173,29 +181,46 @@ public class HospitalOwnerManagementPage extends Page {
     public HospitalOwnerManagementPage goToHospitalAddHospital() {
         //Log.info(
         moveMouseOverElement(hospitalButton);
-        moveMouseOverElement(hospitalAddHospitalButton);
-        clickElement(hospitalAddHospitalButton);
+        moveMouseOverElement(addHospitalButton);
+        clickElement(addHospitalButton);
         driver.get( "http://admin.yikids.com/hospital/add");
         return this;
     }
 
     /**********************************************************************************************************************/
-
+//100
     public void checkCheckboxes(int Chec) {
         int rowNumber;
 
-        for (rowNumber = 0; rowNumber <= Chec; rowNumber++) {
+        for (rowNumber = 0; rowNumber < Chec; rowNumber++) {
             String locator = "//*[@id='row" + rowNumber + "']/td[1]/input";
             WebElement box = driver.findElement(By.xpath(locator));
             box.click();
         }
     }
+    //click checkboxes only with  required status 100
+    public void checkCheckbםxesStatus(int Chec, String status ) {
 
-    //Checking if all selected  checkboxes are checked in order
+        int rowNumber = 0;
+        for (rowNumber = 0; rowNumber < Chec; rowNumber++) {
+            String locatorStatus = "//*[@id='row" + rowNumber + "']/td[9]";
+
+            WebElement statusCell = driver.findElement(By.xpath(locatorStatus));
+            String statusText = statusCell.getText();
+            if (statusText.equals(status)) {
+
+                String locator = "//*[@id='row" + rowNumber + "']/td[1]/input";
+                WebElement box = driver.findElement(By.xpath(locator));
+                box.click();
+            }
+
+        }
+    }
+    //Checking if all selected  checkboxes are checked in order 100
     public boolean isCheckedCheckboxes(int Chec) {
         int rowNumber, count = 0;
         boolean checked = false;
-        for (rowNumber = 0; rowNumber <= Chec; rowNumber++) {
+        for (rowNumber = 0; rowNumber <Chec; rowNumber++) {
             String locator = "//*[@id='row" + rowNumber + "']/td[1]/input";
             WebElement box = driver.findElement(By.xpath(locator));
             if (box.isSelected()) {
@@ -213,10 +238,10 @@ public class HospitalOwnerManagementPage extends Page {
     }
 
     /**********************************************************************************************************************/
-    //Checking only checkboxes rows with required status
+    //Checking only checkboxes rows with required status 100
     public void checkNotAllCheckboxes(int Chec,String status) {
         int rowNumber = 0;
-        for (rowNumber = 0; rowNumber <= Chec; rowNumber++) {
+        for (rowNumber = 0; rowNumber < Chec; rowNumber++) {
             String locatorStatus = "//*[@id='row" + rowNumber + "']/td[9]";
             WebElement statusCell = driver.findElement(By.xpath(locatorStatus));
             String statusText = statusCell.getText();
@@ -229,11 +254,11 @@ public class HospitalOwnerManagementPage extends Page {
     }
 
 
-    //Verify that Checking only checkboxes rows with required status
+    //Verify that Checking only checkboxes rows with required status 100
     public boolean isCheckedNotAllCheckboxes(int Chec,String status) {
         int rowNumber = 0;
         boolean flag=false;
-        for (rowNumber = 0; rowNumber <= Chec; rowNumber++) {
+        for (rowNumber = 0; rowNumber < Chec; rowNumber++) {
             String locatorStatus = "//*[@id='row" + rowNumber + "']/td[9]";
             WebElement statusCell = driver.findElement(By.xpath(locatorStatus));
             String statusText = statusCell.getText();
@@ -252,6 +277,36 @@ public class HospitalOwnerManagementPage extends Page {
     }
     /**********************************************************************************************************************/
 
+
+  /*  @FindBy(xpath = "//table")
+    WebElement table;
+
+    //Verify אtable loading rows sorting only by required Recruter Name
+    public boolean isShowOnlyRequiredRecruterName(string RecName) {
+        int rowNumber = 0;
+        boolean flag=false;
+
+        WebElement table;
+        table = driver.findElement(By.xpath(String.valueOf(table)));
+        Dimension rowsCount = table.s
+        for (rowNumber = 0; !(rowNumber >= rowsCount); rowNumber++) {
+            String recName = "//*[@id='row" + rowNumber + "']/td[2]";
+            WebElement statusCell = driver.findElement(By.xpath(locatorStatus));
+            String statusText = statusCell.getText();
+            String locator = "//*[@id='row" + rowNumber + "']/td[1]/input";
+            WebElement box = driver.findElement(By.xpath(locator));
+            if (status.equalsIgnoreCase(statusText))
+            {
+                if (box.isSelected()) {
+                    flag = true;
+                }
+                else
+                    flag = false;
+            }
+        }
+        return flag;
+
+*/
     public void waitForDeattachButtonIsLoaded() {
         try {
             waitUntilElementIsLoaded(deattachButton);
@@ -261,4 +316,4 @@ public class HospitalOwnerManagementPage extends Page {
             e.printStackTrace();
         }
     }
-    }
+}

@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by Irina Primak on 06-Apr-16.
  */
-public class IrinaMainPage extends Page {
+public class MainPage extends Page {
 
 
     // /fields // TODO: find real locator
@@ -27,19 +27,19 @@ public class IrinaMainPage extends Page {
             WebElement logOutLink;
 
     //constructor
-    public IrinaMainPage(WebDriver driver) {
+    public MainPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = "http://admin.yikids.com/admin/hospital-overview";
         PageFactory.initElements(driver, this);
     }
 
-    public IrinaMainPage openAdminMainPage() {
+    public MainPage openAdminMainPage() {
         //Log.info("Opening SignUp page");
         driver.get(PAGE_URL);
         return this;
     }
 
-   /* public IrinaMainPage goToAddHospital() {
+   /* public MainPage goToAddHospital() {
         //Log.info("Clicking Add Hospital");
         moveMouseOverElement(hospitalLink);
         moveMouseOverElement(addHospitalLink);
@@ -48,14 +48,14 @@ public class IrinaMainPage extends Page {
         return this;
         }
     */
-   /*public IrinaMainPage goToAddHospital() {
+   /*public MainPage goToAddHospital() {
             //Log.info("Add Hospitallpage");
            driver.get(PAGE_URL);
            return this;
     */
 
     public void waitForMainPageLoad() throws IOException, InterruptedException {
-        waitUntilElementIsLoaded(hospitalLink);
+       waitUntilElementIsLoaded(hospitalLink);
     }
 
     public void waitForLogoutSign()

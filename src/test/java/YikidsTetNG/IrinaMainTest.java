@@ -1,7 +1,7 @@
 package YikidsTetNG;
 
 
-import YikidsTetNG.pages.IrinaMainPage;
+import YikidsTetNG.pages.MainPage;
 import YikidsTetNG.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 public class IrinaMainTest {
   //  static String driverPath = "Z:\\Tel-RAN\\aQA\\BrowserDrivers";
-    public IrinaMainPage mainI;
+    public MainPage mainI;
     public LoginPage loginI;
     public WebDriver driver;
     //public String email = "admin@erdocfinder.com";
@@ -31,7 +31,7 @@ public class IrinaMainTest {
         //System.setProperty("webdriver.ie.driver", driverPath+"IEDriverServer.exe");
         //driver = new InternetExplorerDriver();
         driver = new FirefoxDriver();
-        mainI = PageFactory.initElements(driver, IrinaMainPage.class);
+        mainI = PageFactory.initElements(driver, MainPage.class);
         loginI = PageFactory.initElements(driver,LoginPage.class);
     }
 
