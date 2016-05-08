@@ -1,9 +1,11 @@
+
 package YikidsTetNG;
+/**
+ * Created by Pereminski Tatiana on 7-05-16.
+ */
 
 
 import YikidsTetNG.pages.HospitalOwnerManagementPage;
-
-import YikidsTetNG.pages.IrinaMainPage;
 import YikidsTetNG.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,66 +14,69 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
-
 import static org.testng.AssertJUnit.assertTrue;
 
-
-/**
- * Created by Pereminski Tatiana on 6-Mai-16.
- */
 public class HospitalOwnerManagementTest extends TestNgTestBase {
-
-  public IrinaMainPage mainI;
-    public LoginPage loginI;
-    public HospitalOwnerManagementPage hospManagI;
-    public WebDriver driver;
     //public String email = "admin@erdocfinder.com";
     //public String passwordField = "Test123";
 
+
+    public HospitalOwnerManagementPage hospOwnerManagPage;
+    public LoginPage loginPage;
+    public WebDriver driver;
+
     @BeforeClass(alwaysRun = true)
     public void setup() {
-
         driver = new FirefoxDriver();
-        hospManagI = PageFactory.initElements(driver, HospitalOwnerManagementPage.class);
-        mainI = PageFactory.initElements(driver, IrinaMainPage.class);
-        loginI = PageFactory.initElements(driver, LoginPage.class);
+        hospOwnerManagPage = PageFactory.initElements(driver, HospitalOwnerManagementPage.class);
+        loginPage = PageFactory.initElements(driver, LoginPage.class);
+        loginPage.openLoginPage();
+        loginPage.fillLodInFieldsPozitive();
+
     }
 
     @BeforeMethod(alwaysRun = true)
-    public void beforeMethodSetUp() throws IOException, InterruptedException {
-        loginI.openLoginPage()
-                .waitForloginButton();
-        loginI.fillLodInFieldsPozitive();
-        //mainI.waitForMainPageLoad();
-        //mainI.waitForLogoutSign();
-        //hospManagI.goToHospitalOwnerManagment();
-        //hospManagI.waitForhospitalOwnerManagementPageTitle();
-       // assertTrue("Not on PageHospitalOwnerManagment",hospManagI.checkPageHospOwnerManagOpen());
+    public void beforeMethodSetUp() {
+        driver.get("http://admin.yikids.com/admin/hospital_owner_management");
     }
-
-   // @Test
-   // public void openRecrutersList(){
-    //    hospManagI.showAll();
-   // }
 
     @Test
-    public void checkBoxesStatus() throws IOException, InterruptedException {
-        //hospManagI.showAll();
-      // hospManagI.waitForTableLoad();
-      //  hospManagI.checkNumCheckbxesWithStususFromAll(20,"Owned");
-        //hospManagI.checkNotAllCheckbxes(10,"Owned");
-                           }
+    public void HospitalOwnTest100() {
+        hospOwnerManagPage.verify_LogOutLinkButtonIsPresent();
 
-    // test of clicking on Registration link are written in another class
+    }
+   @Test
+    public void checkingBoxesWithStatus100() {
 
-   @AfterClass(alwaysRun = true)
-   public void tearDown() {
-        this.driver.quit();
+        System.out.println("Text element ="+ hospOwnerManagPage.getText());
+        hospOwnerManagPage. checkCheckbםxesStatus(30,"Owned");
+
+
     }
 
+
+    @Test
+    public void verifyAllSelectedCheckBoxesIsCheking100(){
+        int check=10;
+        hospOwnerManagPage.checkCheckboxes(check);
+        assertTrue("Not All  Checkboxes are Checked", hospOwnerManagPage.isCheckedCheckboxes(check));
+
+    }
+
+    @Test
+    public void checkSelectedCheckBoxesAccordingToStatus100(){
+        int check=15;
+        String status= "Owned";
+        hospOwnerManagPage.checkNotAllCheckboxes(check,status);
+
+        assertTrue("Not All Checkboxes with Status are Checked", hospOwnerManagPage.isCheckedNotAllCheckboxes(check,status));
+
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
+        driver.quit();  }
+
+
+
 }
-
-
-

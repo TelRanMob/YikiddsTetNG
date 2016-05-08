@@ -3,8 +3,8 @@
 <suite name="Tests" verbose="5">
   <test name="Test1">
     <classes>
-      <class name="YikidsTetNG.LoginTest"/>
-      <class name="YikidsTetNG.SignupRecruiterTest"/>
+
+      <class name="YikidsTetNG.HospitalOwnerManagementTest"/>
     </classes>
   </test>
 </suite>

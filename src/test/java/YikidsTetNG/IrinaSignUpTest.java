@@ -1,7 +1,7 @@
 package YikidsTetNG;
 
 
-import YikidsTetNG.pages.IrinaSignUPPage;
+import YikidsTetNG.pages.SignUPPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -18,7 +18,7 @@ import static org.testng.AssertJUnit.assertTrue;
  */
 public class IrinaSignUpTest extends TestNgTestBase {
     //  static String driverPath = "Z:\\Tel-RAN\\aQA\\BrowserDrivers";
-    public IrinaSignUPPage signUPPageI;
+    public SignUPPage signUPPageI;
   //  public WebDriver driver;
 
     @BeforeClass(alwaysRun = true)
@@ -28,7 +28,7 @@ public class IrinaSignUpTest extends TestNgTestBase {
         //System.setProperty("webdriver.ie.driver", driverPath+"IEDriverServer.exe");
         //driver = new InternetExplorerDriver();
        // driver = new FirefoxDriver();
-        signUPPageI = PageFactory.initElements(driver, IrinaSignUPPage.class);
+        signUPPageI = PageFactory.initElements(driver, SignUPPage.class);
     }
 
     @BeforeMethod(alwaysRun = true)
