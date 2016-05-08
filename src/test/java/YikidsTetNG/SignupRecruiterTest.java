@@ -2,8 +2,6 @@ package YikidsTetNG;
 
 import YikidsTetNG.pages.SignupRecruiterPage;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
@@ -18,22 +16,23 @@ import static org.testng.AssertJUnit.assertTrue;
 /**
  * Created by Elena on 05.05.2016.
  */
-public class SignupRecruiterTest  {//extends TestNgTestBase
+public class SignupRecruiterTest  extends TestNgTestBase{
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
-    protected WebDriver driver;
+   // protected WebDriver driver;
     public SignupRecruiterPage signupPage;
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
         //System.setProperty("webdriver.chrome.driver", driverPath+"chromedriver.exe");
-          driver = new ChromeDriver();
+         // driver = new ChromeDriver();
         //driver = new FirefoxDriver();
         signupPage = PageFactory.initElements(driver, SignupRecruiterPage.class);
     }
 
     @BeforeMethod(alwaysRun = true)
-    public void beforeMethodSetUp() {signupPage.openSignUPPage();
+    //public void beforeMethodSetUp() {signupPage.openSignUPPage();
         // public void beforeMethodSetUp(){driver.get(baseUrl);
+    public void beforeMethodSetUp() {driver.get("http://physician.yikids.com/recruiter/signup");
     }
 
 

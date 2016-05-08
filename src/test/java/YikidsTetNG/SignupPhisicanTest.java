@@ -2,10 +2,9 @@ package YikidsTetNG;
 
 import YikidsTetNG.pages.SignupPagePhisican;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,23 +16,24 @@ import static org.testng.AssertJUnit.assertTrue;
 /**
  * Created by Elena on 05.05.2016.
  */
-public class SignupPhisicanTest  {//extends TestNgTestBase
+public class SignupPhisicanTest  extends TestNgTestBase{
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
-    protected WebDriver driver;
+    //protected WebDriver driver;
     public SignupPagePhisican signupPage;
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
         //System.setProperty("webdriver.chrome.driver", driverPath+"chromedriver.exe");
-      driver = new ChromeDriver();
+     // driver = new ChromeDriver();
         //driver = new FirefoxDriver();
         signupPage = PageFactory.initElements(driver, SignupPagePhisican.class);
     }
 
     @BeforeMethod(alwaysRun = true)
     public void beforeMethodSetUp() {
-        signupPage.openSignUPPage();
+        //signupPage.openSignUPPage();
         // public void beforeMethodSetUp(){driver.get(baseUrl);
+        driver.get("http://physician.yikids.com/signup");
     }
 
 
@@ -76,8 +76,11 @@ public class SignupPhisicanTest  {//extends TestNgTestBase
                 .fillLastNameField(lastname)
                 .fillemailField(email)
                 .fillzipcodeField(Zip1)
-                .fillzipCode2Field(Zip2)
-                .ClickContinueButton();
+                 .fillzipCode2Field(Zip2);
+        signupPage.ClickContinueButton();
+
+
+
 
         // System.out.println(taniaSignUPPage.gettext());
         //assertTrue("Check warning message the first name feld is ampty ",taniaSignUPPage.CheckWarningMessageFirstName());
@@ -118,9 +121,9 @@ public class SignupPhisicanTest  {//extends TestNgTestBase
 
 
     }
-       /* @AfterSuite(alwaysRun = true)
+        @AfterSuite(alwaysRun = true)
         public void tearDown () {
             this.driver.quit();
-        }*/
+        }
     }
 

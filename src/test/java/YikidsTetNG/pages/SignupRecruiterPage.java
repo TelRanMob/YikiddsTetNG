@@ -245,13 +245,18 @@ public class SignupRecruiterPage extends Page {
         clickElement(continueButton);
         return this;
     }
+    public SignupRecruiterPage ClickLoginButton() {
+        Log.info("Click on continue button");
+        clickElement(loginButton);
+        return this;
+    }
     public void ClicCaptchacheck_box(){
         Log.info("Click on the captcha check box");
         clickElement(ErrorCaptcha);
     }
 
     public String waitAndGetTextofSelectedMessage(String number) throws IOException, InterruptedException {
-        Log.info("Get text to srlrct message");
+        Log.info("Get text of Error message");
         String locator = "//*[@id='section-account']/div[" + number + "]//div[2]/span[1]";
         WebElement m = driver.findElement(By.xpath(locator));
         waitUntilElementIsLoaded(m);

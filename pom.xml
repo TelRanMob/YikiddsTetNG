@@ -124,7 +124,7 @@
     <profile>
       <id>localhost</id>
       <properties>
-        <site.url>http://physician.yikids.com</site.url>
+        <site.url>http://physician.yikids.com/</site.url>
       </properties>
       <activation>
         <activeByDefault>true</activeByDefault>
