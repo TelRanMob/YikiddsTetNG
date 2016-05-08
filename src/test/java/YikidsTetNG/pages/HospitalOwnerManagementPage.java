@@ -32,7 +32,7 @@ public class HospitalOwnerManagementPage extends Page {
 
     @FindBy(xpath = "//*[@class='nav']/li[4]/a")
     WebElement hospitalButton;
-    *****************
+    //*****************
     @FindBy(xpath = "//*[@class='nav']/li[4]/a")
     WebElement hospitalAddHospitalButton;
 
@@ -93,12 +93,12 @@ public class HospitalOwnerManagementPage extends Page {
         return getTextElement(status);
     }
 
-    public boolean CheckTextOfElementLogOut() {
+    /*public boolean CheckTextOfElementLogOut() {
         return verifyTextBoolean(DeattachButton, " Deattach");
     }
     public boolean CheckElementButton() {
         return verifyElementIsPresent(DeattachButton);
-    }
+    }*/
     //constructor
     public HospitalOwnerManagementPage(WebDriver driver) {
         super(driver);
@@ -159,8 +159,8 @@ public class HospitalOwnerManagementPage extends Page {
         return true;
     }
 
-***********
-    ************
+//***********
+   // ************
     public HospitalOwnerManagementPage goToHospitalOwnerManagment() {
         //Log.info(
         moveMouseOverElement(hospitalButton);

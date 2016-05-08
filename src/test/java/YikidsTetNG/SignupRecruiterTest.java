@@ -29,8 +29,8 @@ public class SignupRecruiterTest extends TestNgTestBase {
     }
 
     @BeforeMethod(alwaysRun = true)
-    public void beforeMethodSetUp() {signupPage.openElenaSignUPPage();
-        // public void beforeMethodSetUp(){driver.get(baseUrl);
+   // public void beforeMethodSetUp() {signupPage.openSignUPPage();
+         public void beforeMethodSetUp(){driver.get(baseUrl);
     }
 
 

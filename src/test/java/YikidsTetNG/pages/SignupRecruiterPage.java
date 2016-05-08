@@ -113,8 +113,8 @@ public class SignupRecruiterPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public SignupRecruiterPage openElenaSignUPPage() {
-        Log.info("Opening ElenaSignUPPage page");
+    public SignupRecruiterPage openSignUPPage() {
+        Log.info("Opening SignUPPage page");
         driver.get(PAGE_URL);
         return this;
     }
