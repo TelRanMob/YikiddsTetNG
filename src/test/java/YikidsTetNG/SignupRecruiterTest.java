@@ -104,7 +104,7 @@ public class SignupRecruiterTest  {//extends TestNgTestBase
 
     @Test//Positive
     public void PositiveFillTest() throws InterruptedException {
-        Log.info("Test checkCptchaMessage was started....");
+
         signupPage
                 .fillemailField("sem@yuopmail.com")
                 .fillFirstnameField("firstname")

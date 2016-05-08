@@ -111,7 +111,7 @@ public class SignupPagePhisican extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public SignupPagePhisican openElenaSignUPPage() {
+    public SignupPagePhisican openSignUPPage() {
         Log.info("Opening ElenaSignUPPage page");
         driver.get(PAGE_URL);
         return this;
@@ -283,9 +283,53 @@ public class SignupPagePhisican extends Page {
         return m.getText();
     }
 
-    public boolean verifyCaptchaMessage() {
+
+    // wait methods on SignUpPage
+    public void waitForCaptcha() {
+        Log.info("Waiting of Captcha mesaage");
+        waitUntilIsLoaded(ErrorCaptcha);
+    }
+
+    public void waitForWarningFirstNameEmpty() {
+        waitUntilIsLoaded(firstNameEmptyFieldMessage);
+    }
+
+    public void waitForWarningLastNameEmpty() {
+        waitUntilIsLoaded(LastNameEmptyFieldMessage);
+    }
+    public void waitForWarningEmailEmptyField() {
+        waitUntilIsLoaded(EmailEmptyFieldMessage);
+    }
+    public void waitForWarningInvalidEmail() {
+        waitUntilIsLoaded(EmailWrongFieldMessage);
+    }
+    public void waitForWarningZipEmptyField() {
+        waitUntilIsLoaded(ZipCodEmptyFieldMessage);
+    }
+
+    //werefy Error messages
+    public boolean verifyCaptchaMessage(){
         Log.info("verify Captcha Message");
-        return verifyTextBoolean(ErrorCaptcha, "Please check Captcha!");
+        return verifyTextBoolean(ErrorCaptcha,"Please check Captcha!");
+
+    }
+    public boolean checkFirstNameEmptyFieldMessage() {
+        return verifyTextBoolean(firstNameEmptyFieldMessage, "The first name field is required.");
+    }
+
+    public boolean checkLastNameEmptyFieldMessage() {
+        return verifyTextBoolean(LastNameEmptyFieldMessage, "The last name field is required.");
+    }
+
+    public boolean checkEmailEmptyFieldMessage() {
+        return verifyTextBoolean(EmailEmptyFieldMessage, "The email field is required.");
+    }
+    public boolean checkEmailInvalidFieldMessage() {
+        return verifyTextBoolean(EmailWrongFieldMessage, "The email format is invalid.");
+    }
+
+    public boolean checkZipEmptyFieldMessage() {
+        return verifyTextBoolean(ZipCodEmptyFieldMessage,"The zipcode field is required.");
 
     }
 
