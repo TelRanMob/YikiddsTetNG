@@ -2,8 +2,11 @@ package YikidsTetNG;
 
 import YikidsTetNG.pages.SignupRecruiterPage;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,22 +18,22 @@ import static org.testng.AssertJUnit.assertTrue;
 /**
  * Created by Elena on 05.05.2016.
  */
-public class SignupRecruiterTest extends TestNgTestBase {
+public class SignupRecruiterTest  {//extends TestNgTestBase
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
-    //  protected WebDriver driver;
+    protected WebDriver driver;
     public SignupRecruiterPage signupPage;
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
         //System.setProperty("webdriver.chrome.driver", driverPath+"chromedriver.exe");
-        //  driver = new ChromeDriver();
+          driver = new ChromeDriver();
         //driver = new FirefoxDriver();
         signupPage = PageFactory.initElements(driver, SignupRecruiterPage.class);
     }
 
     @BeforeMethod(alwaysRun = true)
-   // public void beforeMethodSetUp() {signupPage.openSignUPPage();
-         public void beforeMethodSetUp(){driver.get(baseUrl);
+    public void beforeMethodSetUp() {signupPage.openSignUPPage();
+        // public void beforeMethodSetUp(){driver.get(baseUrl);
     }
 
 
@@ -79,8 +82,43 @@ public class SignupRecruiterTest extends TestNgTestBase {
         Assert.assertEquals(signupPage.waitAndGetTextofSelectedMessage(nubmer), message, "Message is nor correct");
 
     }
-   /* @AfterSuite(alwaysRun = true)
+    @Test
+    public void NegativeFillTest() {
+        signupPage
+                .fillemailField("")
+                .fillFirstnameField("")
+                .fillLastNameField("")
+                .fillzipcodeField("")
+                .fillzipCode2Field("")
+                .fillcompanyField("")
+                .ClickContinueButton()
+                .waitForCaptcha();
+        assertTrue("No captha message", signupPage.checkPageForCaptchaMessage());
+        assertTrue("No firstName empty warning", signupPage.checkFirstNameEmptyFieldMessage());
+        assertTrue("No lastName empty warning", signupPage.checkLastNameEmptyFieldMessage());
+        assertTrue("No emailEmptyField warning", signupPage.checkEmailEmptyFieldMessage());
+        assertTrue("No ZipEmptyField warning",signupPage.checkZipEmptyFieldMessage());
+
+    }
+
+
+    @Test//Positive
+    public void PositiveFillTest() throws InterruptedException {
+        Log.info("Test checkCptchaMessage was started....");
+        signupPage
+                .fillemailField("sem@yuopmail.com")
+                .fillFirstnameField("firstname")
+                .fillLastNameField("last")
+                .fillzipcodeField("01089")
+                .fillzipCode2Field("55");
+        Thread.sleep(10000);
+        signupPage.ClickContinueButton();
+
+
+    }
+
+    @AfterSuite(alwaysRun = true)
     public void tearDown() {
         this.driver.quit();
-    }*/
+    }
 }

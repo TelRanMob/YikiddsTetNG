@@ -262,5 +262,51 @@ public class SignupRecruiterPage extends Page {
         return verifyTextBoolean(ErrorCaptcha,"Please check Captcha!");
 
     }
+    // wait methods on SignUpPage
+
+    public void waitForWarningFirstNameEmpty() {
+        waitUntilIsLoaded(firstNameEmptyFieldMessage);
+    }
+
+    public void waitForWarningLastNameEmpty() {
+        waitUntilIsLoaded(LastNameEmptyFieldMessage);
+    }
+    public void waitForWarningEmailEmptyField() {
+        waitUntilIsLoaded(EmailEmptyFieldMessage);
+    }
+    public void waitForWarningInvalidEmail() {
+        waitUntilIsLoaded(EmailWrongFieldMessage);
+    }
+    public void waitForWarningZipEmptyField() {
+        waitUntilIsLoaded(ZipCodEmptyFieldMessage);
+    }
+    public void waitForCaptcha() {
+        waitUntilIsLoaded(ErrorCaptcha);
+    }
+
+//Verefy Error massages
+    public boolean checkFirstNameEmptyFieldMessage() {
+        return verifyTextBoolean(firstNameEmptyFieldMessage, "The first name field is required.");
+    }
+
+    public boolean checkLastNameEmptyFieldMessage() {
+        return verifyTextBoolean(LastNameEmptyFieldMessage, "The last name field is required.");
+    }
+
+    public boolean checkEmailEmptyFieldMessage() {
+        return verifyTextBoolean(EmailEmptyFieldMessage, "The email field is required.");
+    }
+    public boolean checkEmailInvalidFieldMessage() {
+        return verifyTextBoolean(EmailWrongFieldMessage, "The email format is invalid.");
+    }
+
+    public boolean checkZipEmptyFieldMessage() {
+        return verifyTextBoolean(ZipCodEmptyFieldMessage,"The zipcode field is required.");
+
+    }
+
+    public boolean checkPageForCaptchaMessage() {
+        return verifyTextBoolean(ErrorCaptcha, "Please check Captcha!");
+    }
 
 }
