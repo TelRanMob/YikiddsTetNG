@@ -2,9 +2,7 @@ package YikidsTetNG;
 
 import YikidsTetNG.pages.AddHospitalPage;
 import YikidsTetNG.pages.LoginPage;
-import YikidsTetNG.pages.SignupRecruiterPage;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;

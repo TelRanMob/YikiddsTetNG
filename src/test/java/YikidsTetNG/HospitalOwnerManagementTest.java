@@ -7,6 +7,7 @@ package YikidsTetNG;
 
 import YikidsTetNG.pages.HospitalOwnerManagementPage;
 import YikidsTetNG.pages.LoginPage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -14,9 +15,11 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import static org.testng.AssertJUnit.assertTrue;
 
 public class HospitalOwnerManagementTest extends TestNgTestBase {
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     //public String email = "admin@erdocfinder.com";
     //public String passwordField = "Test123";
 
@@ -48,7 +51,7 @@ public class HospitalOwnerManagementTest extends TestNgTestBase {
    @Test
     public void checkingBoxesWithStatus100() {
 
-        System.out.println("Text element ="+ hospOwnerManagPage.getText());
+       Log.info("Text element =" + hospOwnerManagPage.getText());
         hospOwnerManagPage. checkCheckbםxesStatus(30,"Owned");
 
 
