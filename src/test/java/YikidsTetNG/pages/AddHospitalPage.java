@@ -1,5 +1,7 @@
 package YikidsTetNG.pages;
 
+import YikidsTetNG.LogLog4j;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
  * Created by rut on 04.05.2016.
  */
 public class AddHospitalPage extends Page{
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
+
     //fields
     @FindBy(id = "name")
     WebElement nameField;
@@ -103,7 +107,7 @@ public class AddHospitalPage extends Page{
     }
 
     public AddHospitalPage openAddHospitalPage() {
-        //Log.info("Opening AddHospitalPage page");
+        Log.info("Opening AddHospitalPage page");
         driver.get(PAGE_URL);
         return this;
     }
@@ -111,47 +115,47 @@ public class AddHospitalPage extends Page{
     //Fill the fields
 
     public AddHospitalPage fillNameField(String name) {
-        //Log.info("Filling name field");
+        Log.info("Filling name field");
         setElementText(nameField, name);
         return this;
     }
     public AddHospitalPage fillAddresssField(String address) {
-        //Log.info("Filling address field");
+        Log.info("Filling address field");
         setElementText(addressField, address);
         return this;
     }
     public AddHospitalPage fillCityField(String city) {
-        //Log.info("Filling city field");
+        Log.info("Filling city field");
         setElementText(cityField, city);
         return this;
     }
     public AddHospitalPage fillCountryField(String country) {
-        //Log.info("Filling country field");
+        Log.info("Filling country field");
         setElementText(countryField, country);
         return this;
     }
     public AddHospitalPage fillZipCodeField(String zipCode) {
-        //Log.info("Filling zipCode field");
+        Log.info("Filling zipCode field");
         setElementText(zipCodeField, zipCode);
         return this;
     }
     public AddHospitalPage fillPhoneNumberField(String phoneNumber) {
-        //Log.info("Filling phoneNumber field");
+        Log.info("Filling phoneNumber field");
         setElementText(phoneNumberField, phoneNumber);
         return this;
     }
     public AddHospitalPage fillEmailField(String email) {
-        //Log.info("Filling email field");
+        Log.info("Filling email field");
         setElementText(emailField, email);
         return this;
     }
     public AddHospitalPage fillTypeOfFacilityField(String typeOfFacility) {
-        //Log.info("Filling typeOfFacility field");
+        Log.info("Filling typeOfFacility field");
         setElementText(typeOfFacilityField, typeOfFacility);
         return this;
     }
     public AddHospitalPage fillOtherInfoField(String otherInfo) {
-        //Log.info("Filling otherInfo field");
+        Log.info("Filling otherInfo field");
         setElementText(otherInfoField, otherInfo);
         return this;
     }
@@ -159,12 +163,12 @@ public class AddHospitalPage extends Page{
     //Select in Dropdown
 
     public AddHospitalPage selectStateInDropdown(String state){
-        //Log.info("Selecting state in dropdown");
+        Log.info("Selecting state in dropdown");
         selectValueInDropdownbyText(stateFieldDropdown,state);
         return this;
     }
     public AddHospitalPage selectHaveAnERInDropdown(String haveAnER){
-        //Log.info("Selecting haveAnER in dropdown");
+        Log.info("Selecting haveAnER in dropdown");
         selectValueInDropdownbyText(haveAnERDropdown,haveAnER);
         return this;
     }
@@ -172,73 +176,73 @@ public class AddHospitalPage extends Page{
     //Check the checkboxes
 
     public AddHospitalPage checkRecrutingStatusCheckbox(){
-        //Log.info("Clicking on recrutingStatusCheckbox");
+        Log.info("Clicking on recrutingStatusCheckbox");
         clickElement(recrutingStatusCheckbox);
         return this;
     }
     public AddHospitalPage checkTierCheckbox(){
-        //Log.info("Clicking on tierCheckbox");
+        Log.info("Clicking on tierCheckbox");
         clickElement(tierCheckbox);
         return this;
     }
     public AddHospitalPage checkAcademicCheckbox(){
-        //Log.info("Clicking on academicCheckbox");
+        Log.info("Clicking on academicCheckbox");
         clickElement(academicCheckbox);
         return this;
     }
     public AddHospitalPage checkCmpsn200PlusCheckbox(){
-        ///Log.info("Clicking on cmpsn200PlusCheckbox");
+        Log.info("Clicking on cmpsn200PlusCheckbox");
         clickElement(cmpsn200PlusCheckbox);
         return this;
     }
     public AddHospitalPage checkCmeCompensationCheckbox(){
-        //Log.info("Clicking on cmeCompensationCheckbox");
+        Log.info("Clicking on cmeCompensationCheckbox");
         clickElement(cmeCompensationCheckbox);
         return this;
     }
     public AddHospitalPage checkMajorDoubleCoverageCheckbox(){
-        //Log.info("Clicking on majorDoubleCoverageCheckbox");
+        Log.info("Clicking on majorDoubleCoverageCheckbox");
         clickElement(majorDoubleCoverageCheckbox);
         return this;
     }
     public AddHospitalPage checkMdlvlcvgCheckbox(){
-        //Log.info("Clicking on mdlvlcvgCheckbox");
+        Log.info("Clicking on mdlvlcvgCheckbox");
         clickElement(mdlvlcvgCheckbox);
         return this;
     }
     public AddHospitalPage checkEmrCheckbox(){
-        //Log.info("Clicking on emrCheckbox");
+        Log.info("Clicking on emrCheckbox");
         clickElement(emrCheckbox);
         return this;
     }
     public AddHospitalPage checkNoihcdcvgCheckbox(){
-        //Log.info("Clicking on noihcdcvgCheckbox");
+        Log.info("Clicking on noihcdcvgCheckbox");
         clickElement(noihcdcvgCheckbox);
         return this;
     }
     public AddHospitalPage checkNoadmordrsCheckbox(){
-        //Log.info("Clicking on noadmordrsCheckbox");
+        Log.info("Clicking on noadmordrsCheckbox");
         clickElement(noadmordrsCheckbox);
         return this;
     }
     public AddHospitalPage checkPrisnglcvgCheckbox(){
-        //Log.info("Clicking on prisnglcvgCheckbox");
+        Log.info("Clicking on prisnglcvgCheckbox");
         clickElement(prisnglcvgCheckbox);
         return this;
     }
     public AddHospitalPage checkAnystlicCheckbox(){
-        //Log.info("Clicking on anystlicCheckbox");
+        Log.info("Clicking on anystlicCheckbox");
         clickElement(anystlicCheckbox);
         return this;
     }
     public AddHospitalPage checkReprentationCheckbox(){
-        //Log.info("Clicking on reprentationCheckbox");
+        Log.info("Clicking on reprentationCheckbox");
         clickElement(reprentationCheckbox);
         return this;
     }
 
     public AddHospitalPage clickToSave(){
-        //Log.info("Clicking on saveButton");
+        Log.info("Clicking on saveButton");
         clickElement(saveButton);
         return this;
     }
@@ -246,12 +250,20 @@ public class AddHospitalPage extends Page{
     //Check error message
 
     public boolean checkErrorZipMessage() {
+        Log.info("Checking Zip code error message");
         return verifyTextBoolean(errorZipMessage, "Please enter a valid zipcode");
     }
 
+    //Wait for warning
+
+    public void waitForErrorZipWarning() {
+        Log.info("Waiting for Zip code error message");
+        waitUntilIsLoaded(errorZipMessage);
+    }
+
+
     public AddHospitalPage fillAddHospitalProfile(){
-        //Log.info("Filling all fields");
-        openAddHospitalPage();
+        Log.info("Filling all fields");
         checkRecrutingStatusCheckbox();
         fillNameField("name");
         fillAddresssField("address");
