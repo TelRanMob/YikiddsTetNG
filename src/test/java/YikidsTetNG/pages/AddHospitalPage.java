@@ -90,6 +90,11 @@ public class AddHospitalPage extends Page{
     @FindBy(id = "reprentation")
     WebElement reprentationCheckbox;
 
+    @FindBy(xpath = "//*[@class='nav']/li[4]/a")
+    WebElement hospitalButton;
+
+
+
     //messages
 
     @FindBy(xpath = "//span[@class='help-block form-error']")
@@ -106,6 +111,11 @@ public class AddHospitalPage extends Page{
         PageFactory.initElements(driver, this);
     }
 
+    public AddHospitalPage openHospitalMenu() {
+        Log.info("Moving mouse over Hospital menu point");
+        moveMouseOverElement(hospitalButton);
+        return this;
+    }
     public AddHospitalPage openAddHospitalPage() {
         Log.info("Opening AddHospitalPage page");
         driver.get(PAGE_URL);

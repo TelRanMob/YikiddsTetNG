@@ -19,6 +19,7 @@ public class AddHospitalTest extends TestNgTestBase{
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
+        loginPage = PageFactory.initElements(driver, LoginPage.class);
         addHospitalPage = PageFactory.initElements(driver, AddHospitalPage.class);
     }
 
@@ -29,8 +30,10 @@ public class AddHospitalTest extends TestNgTestBase{
 
     }
     @Test
-//    Log.info("");
-    public void addHospitalPositive (){
-
-    }
+//    Log.info(""
+    public void addHospitalPositiveTest() throws InterruptedException {
+        Thread.sleep(3000);
+        addHospitalPage.openHospitalMenu();
+        Thread.sleep(7000);
+}
 }
