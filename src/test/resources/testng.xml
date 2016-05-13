@@ -4,6 +4,7 @@
   <test name="Test1">
     <classes>
       <class name="YikidsTetNG.HospitalOwnerManagementTest"/>
+
     </classes>
   </test>
 </suite>

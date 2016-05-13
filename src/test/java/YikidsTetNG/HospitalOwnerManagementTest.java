@@ -8,10 +8,7 @@ package YikidsTetNG;
 import YikidsTetNG.pages.HospitalOwnerManagementPage;
 import YikidsTetNG.pages.LoginPage;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -26,12 +23,14 @@ public class HospitalOwnerManagementTest extends TestNgTestBase {
 
     public HospitalOwnerManagementPage hospOwnerManagPage;
     public LoginPage loginPage;
-    public WebDriver driver;
+    // public WebDriver driver;
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
-        driver = new FirefoxDriver();
+        //   driver = new FirefoxDriver();
+
         hospOwnerManagPage = PageFactory.initElements(driver, HospitalOwnerManagementPage.class);
+
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginPage.openLoginPage();
         loginPage.fillLodInFieldsPozitive();
@@ -40,11 +39,15 @@ public class HospitalOwnerManagementTest extends TestNgTestBase {
 
     @BeforeMethod(alwaysRun = true)
     public void beforeMethodSetUp() {
+        Log.info("Opening HospitalOwnerManagement page");
         driver.get("http://admin.yikids.com/admin/hospital_owner_management");
+        Log.info("Waiting for DeattachButtonIsLoaded");
+        hospOwnerManagPage.waitForDeattachButtonIsLoaded();
     }
 
     @Test
     public void HospitalOwnTest100() {
+        Log.info("Verify for LogOutLinkButtonIsPresent");
         hospOwnerManagPage.verify_LogOutLinkButtonIsPresent();
 
     }
@@ -76,9 +79,9 @@ public class HospitalOwnerManagementTest extends TestNgTestBase {
 
     }
 
-    @AfterClass(alwaysRun = true)
-    public void tearDown() {
-        driver.quit();  }
+    //   @AfterClass(alwaysRun = true)
+    //  public void tearDown() {
+    //    driver.quit();  }
 
 
 
