@@ -55,7 +55,7 @@ public class HospitalOwnerManagementTest extends TestNgTestBase {
     public void checkingBoxesWithStatus100() {
 
        Log.info("Text element =" + hospOwnerManagPage.getText());
-        hospOwnerManagPage. checkCheckbםxesStatus(30,"Owned");
+       hospOwnerManagPage.checkCheckbםxesStatus(30, "Owned");
 
 
     }

@@ -33,7 +33,7 @@ public class LoginTest extends TestNgTestBase {
     public void beforeMethodSetUp() {
        // .openLoginPage()
         driver.get("http://admin.yikids.com/");
-        loginI .waitForloginButton();
+        loginI.waitForloginButton();
         //verification
         //assertTrue("loginButtom not appeare",loginI.isOnLoginPage());
     }
