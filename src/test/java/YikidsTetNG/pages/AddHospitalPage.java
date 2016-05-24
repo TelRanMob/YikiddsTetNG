@@ -271,22 +271,36 @@ public class AddHospitalPage extends Page{
         waitUntilIsLoaded(errorZipMessage);
     }
 
-
     public AddHospitalPage fillAddHospitalProfile(){
         Log.info("Filling all fields");
+
+        openAddHospitalPage();
         checkRecrutingStatusCheckbox();
         fillNameField("name");
         fillAddresssField("address");
         fillCityField("city");
         fillCountryField("country");
-        fillZipCodeField("11111");
-        fillPhoneNumberField("1111111111");
+        fillZipCodeField("00501");
+        fillPhoneNumberField("0521111111");
         fillEmailField("www@yopmail.com");
         fillTypeOfFacilityField("type");
-        fillOtherInfoField("text text");
+        fillOtherInfoField("text");
         selectStateInDropdown("Alabama");
-        selectHaveAnERInDropdown("true");
+        selectHaveAnERInDropdown("True");
+        checkTierCheckbox();
+        checkAcademicCheckbox();
+        checkCmpsn200PlusCheckbox();
+        checkCmeCompensationCheckbox();
+        checkMajorDoubleCoverageCheckbox();
+        checkMdlvlcvgCheckbox();
+        checkEmrCheckbox();
+        checkNoihcdcvgCheckbox();
+        checkNoadmordrsCheckbox();
+        checkPrisnglcvgCheckbox();
+        checkAnystlicCheckbox();
+        checkReprentationCheckbox();
         clickToSave();
+
         return this;
     }
 }

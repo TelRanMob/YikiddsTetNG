@@ -26,6 +26,13 @@ public class MainPage extends Page {
             //"http://admin.yikids.com/logout")
             WebElement logOutLink;
 
+    //buttons
+    @FindBy(xpath = "//*[@class='nav']/li[4]/a")
+    WebElement hospitalButton;
+
+    @FindBy(xpath = "//*[contains(text(),'Add Hospital')]")
+    WebElement addHospitalButton;
+
     //constructor
     public MainPage(WebDriver driver) {
         super(driver);
@@ -66,5 +73,22 @@ public class MainPage extends Page {
     public boolean isOnMainPage() {
         waitForLogoutSign();
         return exists(logOutLink);
+    }
+    public MainPage clickHospitalButton() {
+        //Log.info("Click signUp button");
+        clickElement(hospitalButton);
+        return this;
+    }
+    public MainPage clickAddHospitalButton() {
+        //Log.info("Click signUp button");
+        clickElement(addHospitalButton);
+        return this;
+    }
+    public MainPage goToAddHospitalPage(){
+        moveMouseOverElement(hospitalButton);
+        clickHospitalButton();
+        moveMouseOverElement(addHospitalButton);
+        clickAddHospitalButton();
+        return this;
     }
 }

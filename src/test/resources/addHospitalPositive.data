@@ -1,0 +1,6 @@
+name;address;city;country;00501;1234567890;111email@yopmail.com;type;text;Mississippi;True
+name;address;city;country;00501;1234567890;112email@yopmail.com;type; ;Mississippi;True
+name;address;city;country;00501;1234567890;113email@yopmail.com;type;text;Alabama;True
+name;address;city;country;00501;1234567890;114email@yopmail.com;type;text;Wyoming;True
+name;address;city;country;00501;1234567890;115email@yopmail.com;type;text;Mississippi;False
+name;address;city;country;00501;1234567890;116email@yopmail.com;type;text;Mississippi;Information Not Available
