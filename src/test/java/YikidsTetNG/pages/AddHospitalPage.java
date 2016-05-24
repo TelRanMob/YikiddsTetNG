@@ -93,8 +93,6 @@ public class AddHospitalPage extends Page{
     @FindBy(xpath = "//*[@class='nav']/li[4]/a")
     WebElement hospitalButton;
 
-
-
     //messages
 
     @FindBy(xpath = "//span[@class='help-block form-error']")

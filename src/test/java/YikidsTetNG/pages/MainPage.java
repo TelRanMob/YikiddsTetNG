@@ -1,5 +1,7 @@
 package YikidsTetNG.pages;
 
+import YikidsTetNG.LogLog4j;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +13,7 @@ import java.io.IOException;
  * Created by Irina Primak on 06-Apr-16.
  */
 public class MainPage extends Page {
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
 
 
     // /fields // TODO: find real locator
@@ -75,16 +78,17 @@ public class MainPage extends Page {
         return exists(logOutLink);
     }
     public MainPage clickHospitalButton() {
-        //Log.info("Click signUp button");
+        Log.info("Click signUp button");
         clickElement(hospitalButton);
         return this;
     }
     public MainPage clickAddHospitalButton() {
-        //Log.info("Click signUp button");
+        Log.info("Click signUp button");
         clickElement(addHospitalButton);
         return this;
     }
     public MainPage goToAddHospitalPage(){
+        Log.info("Go to AddHospital page");
         moveMouseOverElement(hospitalButton);
         clickHospitalButton();
         moveMouseOverElement(addHospitalButton);
