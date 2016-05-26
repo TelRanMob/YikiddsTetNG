@@ -90,8 +90,8 @@ public class MainPage extends Page {
     public MainPage goToAddHospitalPage(){
         Log.info("Go to AddHospital page");
         moveMouseOverElement(hospitalButton);
-        clickHospitalButton();
-        moveMouseOverElement(addHospitalButton);
+//        clickHospitalButton();
+//        moveMouseOverElement(addHospitalButton);
         clickAddHospitalButton();
         return this;
     }

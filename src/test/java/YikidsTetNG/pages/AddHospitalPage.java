@@ -7,11 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Random;
+
 /**
  * Created by rut on 04.05.2016.
  */
 public class AddHospitalPage extends Page{
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
+    private static Random rnd = new Random();
 
     //fields
     @FindBy(id = "name")
@@ -95,8 +98,13 @@ public class AddHospitalPage extends Page{
 
     //messages
 
-    @FindBy(xpath = "//span[@class='help-block form-error']")
+    @FindBy(id = "//span[@class='help-block form-error']")
     WebElement errorZipMessage;
+//    Please enter a valid zipcode
+
+    @FindBy(xpath = "//*[@id='errorsList']/li")
+    WebElement errorNameMessage;
+//    The name must be at least 5 characters.
 
     //buttons
 
@@ -269,6 +277,21 @@ public class AddHospitalPage extends Page{
         waitUntilIsLoaded(errorZipMessage);
     }
 
+    private static String getRandomString(final int length) {
+        String chars = "abcdefghijklmnopqrstuvwxyz";
+        StringBuilder buf = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            buf.append(chars.charAt(rnd.nextInt(chars.length())));
+        }
+        return buf.toString();
+    }
+    public String generateEmail() {
+        String rand = getRandomString(5);
+        String username = rand + "@yopmail.com";
+        Log.info("User's Email generated is <" + username + ">");
+        return username;
+    }
+
     public AddHospitalPage fillAddHospitalProfile(){
         Log.info("Filling all fields");
 
@@ -280,9 +303,8 @@ public class AddHospitalPage extends Page{
         fillCountryField("country");
         fillZipCodeField("00501");
         fillPhoneNumberField("0521111111");
-        fillEmailField("www@yopmail.com");
+        fillEmailField("username");
         fillTypeOfFacilityField("type");
-        fillOtherInfoField("text");
         selectStateInDropdown("Alabama");
         selectHaveAnERInDropdown("True");
         checkTierCheckbox();
@@ -297,6 +319,7 @@ public class AddHospitalPage extends Page{
         checkPrisnglcvgCheckbox();
         checkAnystlicCheckbox();
         checkReprentationCheckbox();
+        fillOtherInfoField("text");
         clickToSave();
 
         return this;

@@ -27,20 +27,21 @@ public class AddHospitalTest extends TestNgTestBase {
         addHospitalPage = PageFactory.initElements(driver, AddHospitalPage.class);
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         mainPage = PageFactory.initElements(driver, MainPage.class);
+        driver.get("http://admin.yikids.com/");
+        loginPage.isOnLoginPage();
+        loginPage.fillLodInFieldsPozitive();
     }
 
     @BeforeMethod(alwaysRun = true)
     public void beforeMethodSetUp() {
-        driver.get("http://admin.yikids.com/");
-        loginPage.isOnLoginPage();
-        loginPage.fillLodInFieldsPozitive();
         mainPage.isOnMainPage();
-        mainPage.goToAddHospitalPage();
+//        mainPage.goToAddHospitalPage();
+        driver.get("http://admin.yikids.com/hospital/add");
     }
     @Test(dataProviderClass = DataProviders.class, dataProvider = "loadAddHospitalPositiveFromFile")
     public void addHospitalPositive(String name,String address,String city,String country,String zipCode,String phoneNumber,
                                     String email,String type,String text,String state,String haveAnER) {
-        Log.info("Filling all fields");
+        Log.info("Test AddHospitalPositive with ExtData was started...");
         addHospitalPage
                 .checkRecrutingStatusCheckbox()
                 .fillNameField(name)
@@ -59,7 +60,7 @@ public class AddHospitalTest extends TestNgTestBase {
     @Test(dataProviderClass = DataProviders.class, dataProvider = "loadAddHospitalNegativeFromFile")
     public void addHospitalNegative(String name,String address,String city,String country,String zipCode,String phoneNumber,
                                     String email,String type,String text,String state,String haveAnER) {
-        Log.info("Filling all fields");
+        Log.info("Test AddHospitalNegative with ExtData was started...");
         addHospitalPage
                 .checkRecrutingStatusCheckbox()
                 .fillNameField(name)
@@ -79,6 +80,7 @@ public class AddHospitalTest extends TestNgTestBase {
     public void addHospitalFillAndCheck(){
         addHospitalPage.fillAddHospitalProfile();
     }
+
 //    @AfterClass(alwaysRun = true)
 //    public void tearDown(){
 //        this.driver.quit();
