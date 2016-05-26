@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -98,13 +99,20 @@ public class AddHospitalPage extends Page{
 
     //messages
 
-    @FindBy(id = "//span[@class='help-block form-error']")
+    @FindBy(xpath = "//span[@class='help-block form-error']")
     WebElement errorZipMessage;
 //    Please enter a valid zipcode
 
     @FindBy(xpath = "//*[@id='errorsList']/li")
     WebElement errorNameMessage;
 //    The name must be at least 5 characters.
+
+    @FindBy(xpath = "//*[@id='add_hospital_form']/div[1]/span")
+    WebElement emptyNameMessage;
+//    Please enter a valid hospital name
+
+    @FindBy(xpath = "//*[@id='resp_div']")
+    WebElement hospitalSavedMessage;
 
     //buttons
 
@@ -135,7 +143,7 @@ public class AddHospitalPage extends Page{
         setElementText(nameField, name);
         return this;
     }
-    public AddHospitalPage fillAddresssField(String address) {
+    public AddHospitalPage fillAddressField(String address) {
         Log.info("Filling address field");
         setElementText(addressField, address);
         return this;
@@ -263,11 +271,36 @@ public class AddHospitalPage extends Page{
         return this;
     }
 
-    //Check error message
+    //Check message
 
     public boolean checkErrorZipMessage() {
         Log.info("Checking Zip code error message");
-        return verifyTextBoolean(errorZipMessage, "Please enter a valid zipcode");
+        return exists(errorZipMessage);
+    }
+    public boolean checkErrorNameMessage() {
+        Log.info("Checking Name error message");
+        return exists(errorNameMessage);
+    }
+
+    public boolean checkEmptyNameMessage() {
+        Log.info("Checking Name empty message");
+        return exists(emptyNameMessage);
+    }
+    public boolean hospitalSavedMessage() {
+        Log.info("Click forgotPassword button");
+        return exists(hospitalSavedMessage);
+    }
+    //Wait and get text
+
+    public String waitAndGetTextOfErrorZipMessage() throws IOException, InterruptedException {
+        Log.info("Waiting for text Zip code error message");
+        waitUntilElementIsLoaded(errorZipMessage);
+        return errorZipMessage.getText();
+    }
+    public String waitAndGetTextOfErrorNameMessage() throws IOException, InterruptedException {
+        Log.info("Waiting for text Name error message");
+        waitUntilElementIsLoaded(errorNameMessage);
+        return errorNameMessage.getText();
     }
 
     //Wait for warning
@@ -275,6 +308,10 @@ public class AddHospitalPage extends Page{
     public void waitForErrorZipWarning() {
         Log.info("Waiting for Zip code error message");
         waitUntilIsLoaded(errorZipMessage);
+    }
+    public void waitForErrorNameWarning() {
+        Log.info("Waiting for Name error message");
+        waitUntilIsLoaded(errorNameMessage);
     }
 
     private static String getRandomString(final int length) {
@@ -294,11 +331,10 @@ public class AddHospitalPage extends Page{
 
     public AddHospitalPage fillAddHospitalProfile(){
         Log.info("Filling all fields");
-
         openAddHospitalPage();
         checkRecrutingStatusCheckbox();
-        fillNameField("name");
-        fillAddresssField("address");
+        fillNameField("hospital");
+        fillAddressField("address");
         fillCityField("city");
         fillCountryField("country");
         fillZipCodeField("00501");
